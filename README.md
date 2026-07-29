@@ -28,16 +28,16 @@ This site is the presentation layer for six existing GitHub projects. It does **
 
 ## Caricature and avatar direction
 
-The brief calls for a premium stylized caricature of Darrell based on two reference photos. As instructed, **the final illustrated asset does not exist yet**, so the site renders a polished placeholder instead: `components/home/CommandCenterPortrait.tsx`.
+The brief called for a premium stylized caricature of Darrell based on two reference photos, generated as an illustrated Engineering Command Center scene. The final artwork now lives at `public/images/darrell-command-center-avatar.png` and renders via `components/home/CommandCenterPortrait.tsx`.
 
-- Reference photos live at `public/reference/darrell-reference-1.jpg` and `public/reference/darrell-reference-2.jpg`. They are **not rendered anywhere in the UI** (see Privacy note below); the component only checks that they exist.
-- The placeholder renders a "DB" monogram inside a HUD ring with a radar sweep, orbiting domain tags (AI / Healthcare / Data / Sports / Frontend), and the accessible label **"Darrell Bullock Command Center Avatar"**.
+- The component checks for `public/images/darrell-command-center-avatar.png` at render time and renders it inside a HUD ring with a radar sweep and orbiting domain tags (AI / Healthcare / Data / Sports / Frontend). If that file is ever removed, the component **automatically falls back** to a polished "DB" monogram placeholder with the accessible label **"Darrell Bullock Command Center Avatar"**, no code changes required either way.
 - It's used at hero size on the home page (`components/home/HeroAvatar.tsx`) and at compact size on the About page (`components/about/AvatarPanel.tsx`).
-- The component checks for `public/images/darrell-command-center-avatar.png` at render time. **Drop the final artwork at that exact path and the placeholder is automatically replaced**, no code changes required.
+- The final image was generated from a detailed written description of Darrell's appearance (hair, beard, glasses, build, expression), not by uploading the raw reference photos to the generation service, see the privacy note below for why.
+- To regenerate or replace it later with commissioned artwork, just overwrite `public/images/darrell-command-center-avatar.png`.
 
 ### Privacy note
 
-The two reference photos are real personal photos of Darrell. They're kept in `public/reference/` for local reference only, are **not displayed by any component**, and `public/reference/` is listed in `.gitignore` so they are never committed or pushed to the public repo. They exist only on the local machine that scaffolded this project. If you clone this repo fresh, `CommandCenterPortrait` still works, it just reports `0/2` reference assets linked and renders the placeholder.
+The two reference photos are real personal photos of Darrell. They're kept in `public/reference/` for local reference only, are **not displayed by any component**, and `public/reference/` is listed in `.gitignore` so they are never committed or pushed to the public repo. They exist only on the local machine that scaffolded this project. The generated avatar was produced from a text description derived from those photos, not by uploading the photos themselves to the image generation service. If you clone this repo fresh, the final avatar at `public/images/darrell-command-center-avatar.png` still renders normally since that file **is** committed.
 
 ## Project lineup
 
@@ -123,12 +123,11 @@ Search the file for `TODO` to find every placeholder that needs a real URL. Also
 - `lib/site.ts` → `social.github`, `social.linkedin`
 - `components/resume/ResumeSummary.tsx` → the `/resume.pdf` download link (add a real PDF to `public/`)
 
-## How to replace the avatar placeholder with final caricature art
+## How to replace the avatar with new caricature art
 
-1. Generate or commission the final stylized caricature based on the reference photos.
-2. Save it as `public/images/darrell-command-center-avatar.png`.
-3. That's it, `CommandCenterPortrait` checks for this exact path at render time and will automatically swap from the placeholder to the real image with no code changes.
-4. Once the final art is in place, consider removing the raw files in `public/reference/` (see Privacy note above).
+1. Generate or commission a new stylized caricature.
+2. Overwrite `public/images/darrell-command-center-avatar.png` with the new file (same filename).
+3. That's it, `CommandCenterPortrait` checks for this exact path at render time and renders whatever is there, no code changes required. If the file is ever deleted, it falls back to the "DB" monogram placeholder automatically.
 
 ## How to add new projects
 
@@ -160,13 +159,12 @@ Once deployed, connect a custom domain from the Vercel project's **Settings → 
 ## Performance notes
 
 - Server Components by default; `"use client"` is scoped to components that need interactivity (nav, filters, forms, motion)
-- `next/image` used for the avatar once the final asset exists
+- `next/image` used for the avatar, with Next's built-in image optimization handling responsive sizing/format
 - Radar/HUD backgrounds are pure CSS (gradients + keyframes), not JS-driven, to keep the main thread free
 - No heavy animation or 3D dependencies, Framer Motion is the only animation library, used sparingly
 
 ## Future roadmap
 
-- Replace the `CommandCenterPortrait` placeholder with the final illustrated avatar
 - Wire up real GitHub/live demo URLs for all six projects
 - Connect the contact form to a real backend (Resend, Formspree, or a Next.js API route)
 - Add a real resume PDF at `public/resume.pdf`
