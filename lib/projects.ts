@@ -1,0 +1,360 @@
+import type { ProjectFilter } from "./constants";
+
+export type ProjectStatus = "Live" | "In Development" | "Prototype";
+
+export interface Project {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  filters: ProjectFilter[];
+  tagline: string;
+  description: string;
+  portfolioAngle: string;
+  status: ProjectStatus;
+  /** TODO: replace with the real GitHub repo URL once published/public */
+  githubUrl: string;
+  /** TODO: replace with the real live demo URL once deployed */
+  liveUrl: string;
+  caseStudyUrl?: string;
+  featured: boolean;
+  stack: string[];
+  highlights: string[];
+  problem: string;
+  solution: string;
+  architecture: string;
+  challenges: string[];
+  futureRoadmap: string[];
+  resumeBullet: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: "aislepilot",
+    slug: "aislepilot",
+    title: "AislePilot",
+    category: "Retail, AI, Shopping, Full-Stack",
+    filters: ["AI", "Frontend"],
+    tagline:
+      "A smart shopping list app that helps users plan trips, organize items, and shop faster.",
+    description:
+      "AislePilot is a mobile-first shopping assistant that turns a loose list of groceries into an organized, store-aware trip plan. It focuses on the everyday friction of shopping: aisle order, saved lists, and quick re-planning when a store or list changes.",
+    portfolioAngle:
+      "Built a mobile-first shopping assistant that combines product planning, store-aware UX, saved lists, and full-stack product design.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/aislepilot", // TODO: update with real GitHub URL
+    liveUrl: "https://aislepilot.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: undefined,
+    featured: true,
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Kroger API-ready provider layer",
+      "PostgreSQL",
+      "Auth",
+      "Local persistence",
+    ],
+    highlights: [
+      "Store-aware list organization designed around real shopping trips",
+      "Provider-layer architecture ready for live retailer API integration",
+      "Saved lists and local persistence for fast repeat trips",
+      "Full-stack auth and data model built on Supabase/PostgreSQL",
+    ],
+    problem:
+      "Shopping lists are usually flat text with no awareness of store layout, past trips, or how people actually shop. That leads to backtracking, forgotten items, and slow trips.",
+    solution:
+      "AislePilot models lists as structured, categorized data and layers a store-aware provider system on top, so the app can eventually reorder items by aisle and suggest items from prior trips, while working fully offline-first today with local persistence.",
+    architecture:
+      "A Next.js App Router frontend talks to a Supabase/PostgreSQL backend for auth and persisted lists, behind a typed provider abstraction that isolates retailer-specific logic (starting with a Kroger API-ready provider) from the core list and trip-planning domain model.",
+    challenges: [
+      "Designing a provider abstraction that works with mock data today and real retailer APIs later without a rewrite",
+      "Balancing offline-first local persistence with authenticated, synced cloud storage",
+      "Keeping the mobile UX fast and low-friction for quick, repeated shopping trips",
+    ],
+    futureRoadmap: [
+      "Wire up a live retailer API for real aisle and pricing data",
+      "Add collaborative/shared household lists",
+      "Add trip history and smart re-order suggestions",
+    ],
+    resumeBullet:
+      "Designed and built AislePilot, a full-stack shopping assistant with a store-aware provider architecture, saved lists, and offline-first UX.",
+  },
+  {
+    id: "campus-legend",
+    slug: "campus-legend",
+    title: "Campus Legend",
+    category: "Sports Game, RPG, Simulation",
+    filters: ["Games", "Sports"],
+    tagline:
+      "A console-style athlete career RPG where users build a player from freshman season to pro potential.",
+    description:
+      "Campus Legend is a career-mode sports RPG. Players create an athlete, make decisions across seasons, and watch a simulation engine turn those choices into stats, storylines, and a shot at going pro, all wrapped in a console-style presentation.",
+    portfolioAngle:
+      "Built a sports career RPG with player progression, decision systems, season simulation, and console-style presentation.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/campus-legend", // TODO: update with real GitHub URL
+    liveUrl: "https://campus-legend.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: "/case-studies#campus-legend",
+    featured: true,
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "LocalStorage",
+      "Game state engine",
+    ],
+    highlights: [
+      "Custom game state engine driving multi-season player progression",
+      "Branching decision system that affects stats and storylines",
+      "Season simulation logic independent of the presentation layer",
+      "Console-style UI with animated transitions between game screens",
+    ],
+    problem:
+      "Career-mode sports games are usually locked inside large studio titles. Building one from scratch means designing a progression system, a simulation model, and a UI that feels like a console game, entirely in the browser.",
+    solution:
+      "Campus Legend separates a pure game-state engine (player attributes, season progression, decision outcomes) from the React presentation layer, so seasons can be simulated deterministically and the UI can focus on console-style feedback and pacing.",
+    architecture:
+      "A TypeScript game engine module owns player state, season progression, and decision trees; React/Next.js components consume that state and render console-style screens, with Framer Motion handling transitions and LocalStorage persisting career progress between sessions.",
+    challenges: [
+      "Modeling multi-season player progression in a way that stays balanced and replayable",
+      "Keeping game logic decoupled from UI so the simulation can be tested independently",
+      "Designing a console-style UI that feels premium without heavy animation overhead",
+    ],
+    futureRoadmap: [
+      "Add more branching storylines and decision trees",
+      "Expand pro-career simulation beyond the college years",
+      "Add cloud save support alongside LocalStorage",
+    ],
+    resumeBullet:
+      "Built Campus Legend, a browser-based sports career RPG with a custom simulation engine and console-style UI.",
+  },
+  {
+    id: "ai-detective-console",
+    slug: "ai-detective-console",
+    title: "AI Detective: Console",
+    category: "AI Game, LLM, Mystery, Console-Style UI",
+    filters: ["AI", "Games"],
+    tagline:
+      "A cinematic mystery game where players interview AI-powered suspects and solve a branching case.",
+    description:
+      "AI Detective: Console is a mystery game built around LLM-driven suspect interviews. Players gather evidence, question suspects, catch contradictions, and build a case, all inside a cinematic, console-style interface.",
+    portfolioAngle:
+      "Built a console-style AI detective game with LLM-ready suspect interviews, evidence tracking, contradiction detection, save progress, and cinematic React UI.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/ai-detective-console", // TODO: update with real GitHub URL
+    liveUrl: "https://ai-detective-console.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: "/case-studies#ai-detective-console",
+    featured: true,
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Zustand",
+      "Mock AI provider",
+      "OpenAI-ready provider",
+      "Claude-ready provider",
+      "LocalStorage",
+    ],
+    highlights: [
+      "Provider-agnostic AI layer with mock, OpenAI-ready, and Claude-ready implementations",
+      "Evidence tracking and contradiction detection across suspect interviews",
+      "Zustand-driven state management for branching case progress",
+      "Cinematic console-style UI with save/resume support",
+    ],
+    problem:
+      "AI-driven narrative games need suspect responses that feel consistent and can be checked against evidence, while also being resilient to swapping or mocking the underlying LLM provider during development.",
+    solution:
+      "The game routes all suspect dialogue through a provider-agnostic AI interface, so the same interview and contradiction-detection logic works against a deterministic mock provider during development and against OpenAI- or Claude-ready providers in production.",
+    architecture:
+      "Zustand stores case state (evidence, suspect memory, contradictions); a provider abstraction layer routes prompts to a mock, OpenAI-ready, or Claude-ready backend; React/Framer Motion render the console-style interview and evidence-board UI, with LocalStorage persisting save progress.",
+    challenges: [
+      "Designing contradiction detection that works reliably against LLM-generated suspect answers",
+      "Building an AI provider abstraction that swaps cleanly between mock and real LLM backends",
+      "Keeping branching case state consistent across saves and multiple suspect interviews",
+    ],
+    futureRoadmap: [
+      "Connect a production LLM provider for live suspect interviews",
+      "Add additional cases with deeper branching narratives",
+      "Add a difficulty/hint system for contradiction detection",
+    ],
+    resumeBullet:
+      "Built AI Detective: Console, an LLM-powered mystery game with provider-agnostic AI, evidence tracking, and contradiction detection.",
+  },
+  {
+    id: "pr-review",
+    slug: "pr-review",
+    title: "PR Review",
+    category: "AI Developer Tool, Code Review, Senior Engineering",
+    filters: ["AI", "Developer Tools"],
+    tagline:
+      "An AI-powered pull request review coach that helps developers catch risk before human review.",
+    description:
+      "PR Review is an AI-assisted code review coach. It analyzes a pull request for risk, missing test coverage, and code quality issues, and gives developers senior-engineer-style feedback before a human reviewer ever looks at the diff.",
+    portfolioAngle:
+      "Built an AI-powered pull request review coach that analyzes code risk, finds test gaps, and gives developers senior-engineer feedback before human review.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/pr-review", // TODO: update with real GitHub URL
+    liveUrl: "https://pr-review.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: "/case-studies#pr-review",
+    featured: true,
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub API",
+      "FastAPI or Node",
+      "PostgreSQL",
+      "LLM provider abstraction",
+      "Background jobs",
+    ],
+    highlights: [
+      "Automated risk analysis surfaced before human code review",
+      "Test gap detection tied directly to changed files",
+      "GitHub API integration for pulling real PR diffs and metadata",
+      "Background job pipeline for asynchronous, non-blocking analysis",
+    ],
+    problem:
+      "Human reviewers spend a lot of time catching issues that could be flagged automatically, risky diffs, missing tests, unclear intent, before they ever open the PR.",
+    solution:
+      "PR Review pulls a pull request's diff and metadata via the GitHub API, runs it through an LLM-backed analysis pipeline in a background job, and returns a structured risk report: what's risky, what's untested, and what a senior reviewer would flag first.",
+    architecture:
+      "A Next.js frontend surfaces PR analysis results; a Node/FastAPI service handles GitHub API calls and orchestrates background jobs; an LLM provider abstraction layer generates the risk and test-gap analysis, with results persisted in PostgreSQL for history and comparison across PRs.",
+    challenges: [
+      "Structuring LLM output into consistent, actionable risk categories rather than free-form text",
+      "Designing background job handling so analysis doesn't block the PR review UI",
+      "Scoping test-gap detection accurately across varied codebases and languages",
+    ],
+    futureRoadmap: [
+      "Add inline GitHub PR comments from the analysis pipeline",
+      "Support additional LLM providers and model comparison",
+      "Add team-level risk trend dashboards",
+    ],
+    resumeBullet:
+      "Built PR Review, an AI-powered code review coach that surfaces risk and test gaps in pull requests via a GitHub-integrated analysis pipeline.",
+  },
+  {
+    id: "weatherwise-ai",
+    slug: "weatherwise-ai",
+    title: "WeatherWise AI",
+    category: "Weather, Senior Frontend, Performance, Maps",
+    filters: ["AI", "Frontend"],
+    tagline:
+      "A mobile-first weather dashboard focused on speed, maps, alerts, offline fallback, and Core Web Vitals.",
+    description:
+      "WeatherWise AI is a mobile-first weather dashboard built as a frontend performance showcase: alert-first UX, map layers, offline fallback, and measured Core Web Vitals, not just another weather widget.",
+    portfolioAngle:
+      "Built a mobile-first weather dashboard focused on speed, alert-first UX, maps, offline support, edge caching, and measurable frontend performance.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/weatherwise-ai", // TODO: update with real GitHub URL
+    liveUrl: "https://weatherwise-ai.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: "/case-studies#weatherwise-ai",
+    featured: true,
+    stack: [
+      "Next.js App Router",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Server Components",
+      "Edge caching",
+      "PWA",
+      "Lighthouse reports",
+      "Mock weather provider",
+    ],
+    highlights: [
+      "Alert-first layout that prioritizes severe weather above the fold",
+      "Server Components and edge caching for fast first paint",
+      "PWA support with offline fallback when connectivity drops",
+      "Measured Core Web Vitals with recorded Lighthouse reports",
+    ],
+    problem:
+      "Weather apps are usually cluttered and slow on mobile, and rarely treat performance as a first-class feature even though speed directly affects usefulness during severe weather.",
+    solution:
+      "WeatherWise AI leans on Server Components and edge caching to minimize client JavaScript, prioritizes alerts in the layout so critical information loads first, and adds a PWA layer with offline fallback so the dashboard stays useful with poor connectivity.",
+    architecture:
+      "Next.js App Router Server Components fetch and cache weather data at the edge; a mock weather provider abstraction stands in for a live weather API; a service worker/PWA layer provides offline fallback; Lighthouse reports track Core Web Vitals as a build-time discipline.",
+    challenges: [
+      "Keeping bundle size and client JavaScript minimal while still supporting interactive maps",
+      "Designing a useful offline fallback experience instead of a blank error state",
+      "Making alert-first layout decisions that hold up across device sizes",
+    ],
+    futureRoadmap: [
+      "Connect a live weather data provider in place of the mock provider",
+      "Add radar map layers with historical playback",
+      "Publish ongoing Lighthouse/Core Web Vitals tracking over time",
+    ],
+    resumeBullet:
+      "Built WeatherWise AI, a performance-first mobile weather dashboard using Server Components, edge caching, and PWA offline support.",
+  },
+  {
+    id: "healthcare-claims-warehouse",
+    slug: "healthcare-claims-warehouse",
+    title: "Healthcare Claims Analytics Warehouse",
+    category: "Healthcare, SQL, Data Engineering, Compliance-Aware Analytics",
+    filters: ["Healthcare", "Data"],
+    tagline:
+      "A HIPAA-aware synthetic healthcare claims warehouse with SQL marts, quality checks, masking, and audit logging.",
+    description:
+      "A healthcare claims analytics warehouse built entirely on synthetic data, designed to demonstrate compliance-aware data engineering: role-based access, masked identifiers, audit logging, export controls, and data quality checks on top of advanced SQL warehouse marts.",
+    portfolioAngle:
+      "Built a HIPAA-aware healthcare claims analytics warehouse using synthetic data, advanced SQL, role-based views, masked identifiers, audit logging, export controls, and data quality checks.",
+    status: "In Development",
+    githubUrl: "https://github.com/YOUR_USERNAME/healthcare-claims-warehouse", // TODO: update with real GitHub URL
+    liveUrl: "https://healthcare-claims-warehouse.vercel.app", // TODO: update with real live demo URL
+    caseStudyUrl: "/case-studies#healthcare-claims-warehouse",
+    featured: true,
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Prisma or direct SQL",
+      "Docker Compose",
+      "Advanced SQL",
+      "Warehouse marts",
+    ],
+    highlights: [
+      "Synthetic claims data pipeline with no real PHI, HIPAA-aware by design",
+      "Role-based views that mask identifiers depending on access level",
+      "Audit logging and export controls around sensitive analytics queries",
+      "Warehouse marts and data quality checks built on advanced SQL",
+    ],
+    problem:
+      "Healthcare analytics systems have to prove compliance discipline, masked identifiers, audit trails, access control, without ever touching real PHI in a portfolio setting.",
+    solution:
+      "The warehouse generates realistic synthetic claims data, models it through SQL marts, and wraps every layer with compliance-aware controls: role-based views that mask identifiers, audit logging on sensitive queries, export controls, and automated data quality checks.",
+    architecture:
+      "Docker Compose runs a PostgreSQL warehouse seeded with synthetic claims data; SQL marts and views implement role-based masking; a Next.js frontend surfaces warehouse marts and data quality results through Prisma or direct SQL, with audit logging wrapping sensitive query paths.",
+    challenges: [
+      "Generating synthetic claims data realistic enough to support meaningful analytics",
+      "Designing role-based views that mask identifiers without breaking downstream marts",
+      "Implementing audit logging and export controls without adding excessive query overhead",
+    ],
+    futureRoadmap: [
+      "Expand warehouse marts to cover additional claims scenarios",
+      "Add a compliance dashboard summarizing audit log activity",
+      "Add automated data quality alerting",
+    ],
+    resumeBullet:
+      "Built a HIPAA-aware healthcare claims analytics warehouse with synthetic data, role-based masking, audit logging, and SQL data quality checks.",
+  },
+];
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}
+
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((project) => project.featured);
+}
+
+export function getProjectsByFilter(filter: ProjectFilter): Project[] {
+  if (filter === "All") return projects;
+  return projects.filter((project) => project.filters.includes(filter));
+}

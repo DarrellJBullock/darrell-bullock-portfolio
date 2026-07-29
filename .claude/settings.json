@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Grep(*)",
+      "Glob(*)",
+
+      "Bash(pwd)",
+      "Bash(ls *)",
+      "Bash(find . *)",
+      "Bash(cat package.json)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+
+      "Bash(npm install)",
+      "Bash(npm ci)",
+      "Bash(npm run dev)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(npm run test)",
+      "Bash(npm run typecheck)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx next lint)",
+
+      "Bash(git init)",
+      "Bash(git status)",
+      "Bash(git add .)",
+      "Bash(git commit -m *)",
+      "Bash(git branch -M main)",
+      "Bash(git remote add origin *)",
+      "Bash(git push -u origin main)",
+      "Bash(git log --oneline *)",
+
+      "Bash(gh repo create darrell-bullock-portfolio --public --source=. --remote=origin --push)",
+
+      "Read(.env.example)",
+      "Write(.env.example)",
+      "Edit(.env.example)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(gh repo delete *)",
+      "Bash(vercel --prod *)",
+      "Bash(npm publish *)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.production)",
+      "Read(.env.development)",
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.production)",
+      "Read(**/.env.development)",
+      "Read(**/*secret*)",
+      "Read(**/*token*)",
+      "Read(**/*key*)",
+
+      "Write(.env)",
+      "Write(.env.local)",
+      "Write(.env.production)",
+      "Write(.env.development)",
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.env.production)",
+      "Edit(.env.development)",
+
+      "Bash(rm -rf / *)",
+      "Bash(rm -rf ~ *)",
+      "Bash(rm -rf .git *)",
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(curl * | sh)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | sh)",
+      "Bash(wget * | bash)"
+    ]
+  },
+  "env": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
+}
