@@ -8,7 +8,7 @@ import { ProjectRoadmap } from "@/components/projects/ProjectRoadmap";
 import { ProjectLinks } from "@/components/projects/ProjectLinks";
 import { ArchitecturePreview } from "@/components/case-studies/ArchitecturePreview";
 import { TradeoffPanel } from "@/components/case-studies/TradeoffPanel";
-import { EmptyState } from "@/components/ui/EmptyState";
+import { ProjectScreenshot } from "@/components/projects/ProjectScreenshot";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -83,10 +83,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               Screenshots
             </h2>
             <div className="mt-4">
-              <EmptyState
-                title="Screenshots coming soon"
-                description="Live product screenshots will be added here once this project reaches a public release milestone."
-              />
+              <ProjectScreenshot slug={project.slug} title={project.title} />
             </div>
           </section>
 
