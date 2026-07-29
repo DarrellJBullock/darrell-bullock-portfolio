@@ -34,7 +34,7 @@ export async function sendContactMessage(
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: "Portfolio Contact Form <onboarding@resend.dev>",
-      to: siteConfig.social.email,
+      to: siteConfig.contactNotificationEmail,
       replyTo: email,
       subject: `Portfolio contact from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
