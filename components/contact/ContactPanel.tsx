@@ -18,7 +18,7 @@ export function ContactPanel() {
             rel="noreferrer"
             className="text-bright hover:text-cyan"
           >
-            GitHub {/* TODO: replace with real GitHub profile URL */}
+            GitHub
           </a>
         </li>
         <li>
@@ -28,7 +28,7 @@ export function ContactPanel() {
             rel="noreferrer"
             className="text-bright hover:text-cyan"
           >
-            LinkedIn {/* TODO: replace with real LinkedIn profile URL */}
+            LinkedIn
           </a>
         </li>
       </ul>

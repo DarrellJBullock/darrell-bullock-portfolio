@@ -3,7 +3,6 @@ export const siteConfig = {
   title: "Darrell Bullock | Senior Software Engineer",
   description:
     "Senior Software Engineer building AI-powered, data-driven web products across frontend engineering, healthcare workflows, data systems, code review tools, and sports simulations.",
-  // TODO: replace with production domain once deployed
   url: "https://djb-portfolio.vercel.app",
   heroHeadline: "Senior Software Engineer building AI-powered, data-driven web products.",
   heroSubheadline:
@@ -11,10 +10,8 @@ export const siteConfig = {
   primaryCta: { label: "View Projects", href: "/projects" },
   secondaryCta: { label: "Contact Me", href: "/contact" },
   social: {
-    // TODO: replace with real GitHub profile URL
-    github: "https://github.com/YOUR_USERNAME",
-    // TODO: replace with real LinkedIn profile URL
-    linkedin: "https://www.linkedin.com/in/YOUR_USERNAME",
+    github: "https://github.com/DarrellJBullock",
+    linkedin: "https://linkedin.com/in/darrellbullock",
     email: "darrellbullock@comcast.net",
   },
   availability:
