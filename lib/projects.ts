@@ -42,8 +42,8 @@ export const projects: Project[] = [
     portfolioAngle:
       "Built a mobile-first shopping assistant that combines product planning, store-aware UX, saved lists, and full-stack product design.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/aislepilot", // TODO: update with real GitHub URL
-    liveUrl: "https://aislepilot.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/aislepilot",
+    liveUrl: "https://store-pilot-black.vercel.app",
     caseStudyUrl: undefined,
     featured: true,
     stack: [
@@ -94,8 +94,8 @@ export const projects: Project[] = [
     portfolioAngle:
       "Built a sports career RPG with player progression, decision systems, season simulation, and console-style presentation.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/campus-legend", // TODO: update with real GitHub URL
-    liveUrl: "https://campus-legend.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/campus-legend",
+    liveUrl: "https://campus-legend.vercel.app",
     caseStudyUrl: "/case-studies#campus-legend",
     featured: true,
     stack: [
@@ -145,8 +145,8 @@ export const projects: Project[] = [
     portfolioAngle:
       "Built a console-style AI detective game with LLM-ready suspect interviews, evidence tracking, contradiction detection, save progress, and cinematic React UI.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/ai-detective-console", // TODO: update with real GitHub URL
-    liveUrl: "https://ai-detective-console.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/ai-detective-console",
+    liveUrl: "https://ai-detective-console.vercel.app",
     caseStudyUrl: "/case-studies#ai-detective-console",
     featured: true,
     stack: [
@@ -199,8 +199,8 @@ export const projects: Project[] = [
     portfolioAngle:
       "Built an AI-powered pull request review coach that analyzes code risk, finds test gaps, and gives developers senior-engineer feedback before human review.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/pr-review", // TODO: update with real GitHub URL
-    liveUrl: "https://pr-review.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/code-review-coach",
+    liveUrl: "https://web-phi-peach-94.vercel.app",
     caseStudyUrl: "/case-studies#pr-review",
     featured: true,
     stack: [
@@ -251,8 +251,8 @@ export const projects: Project[] = [
     portfolioAngle:
       "Built a mobile-first weather dashboard focused on speed, alert-first UX, maps, offline support, edge caching, and measurable frontend performance.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/weatherwise-ai", // TODO: update with real GitHub URL
-    liveUrl: "https://weatherwise-ai.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/weatherwise-ai",
+    liveUrl: "https://weather-watch-gamma.vercel.app",
     caseStudyUrl: "/case-studies#weatherwise-ai",
     featured: true,
     stack: [
