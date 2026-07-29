@@ -4,6 +4,8 @@ import { ResumeSummary } from "@/components/resume/ResumeSummary";
 import { ExperienceHighlights } from "@/components/resume/ExperienceHighlights";
 import { SkillCloud } from "@/components/resume/SkillCloud";
 import { ProjectResumeBullets } from "@/components/resume/ProjectResumeBullets";
+import { EDUCATION } from "@/lib/resume";
+import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -17,13 +19,23 @@ export default function ResumePage() {
       <ResumeSummary />
 
       <div className="mt-16">
-        <SectionHeader eyebrow="Highlights" title="Experience highlights" className="mb-8" />
+        <SectionHeader eyebrow="Career History" title="Experience timeline" className="mb-8" />
         <ExperienceHighlights />
       </div>
 
       <div className="mt-16">
         <SectionHeader eyebrow="Technical Skills" title="Skill cloud" className="mb-8" />
         <SkillCloud />
+      </div>
+
+      <div className="mt-16">
+        <SectionHeader eyebrow="Education" title="Academic background" className="mb-8" />
+        <Card className="max-w-md">
+          <p className="font-display text-base font-semibold text-bright">{EDUCATION.degree}</p>
+          <p className="mt-1 text-sm text-fog-dim">
+            {EDUCATION.school}, {EDUCATION.location}
+          </p>
+        </Card>
       </div>
 
       <div className="mt-16">

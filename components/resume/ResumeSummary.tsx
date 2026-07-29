@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
+import { RESUME_TITLE, RESUME_LOCATION, RESUME_SUMMARY } from "@/lib/resume";
 
 export function ResumeSummary() {
   return (
@@ -8,13 +9,11 @@ export function ResumeSummary() {
       <h1 className="mt-3 font-display text-3xl font-semibold text-bright sm:text-4xl">
         {siteConfig.name}
       </h1>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-fog-dim">
-        {siteConfig.heroSubheadline} Focused on AI-powered products, healthcare and data systems,
-        frontend performance, and senior-level code review and delivery ownership.
-      </p>
+      <p className="mt-2 text-sm font-medium text-cyan">{RESUME_TITLE}</p>
+      <p className="console-text mt-1 text-xs text-fog-dim">{RESUME_LOCATION}</p>
+      <p className="mt-4 max-w-2xl text-base leading-relaxed text-fog-dim">{RESUME_SUMMARY}</p>
 
       <div className="mt-6 flex flex-wrap gap-4">
-        {/* TODO: replace with a real resume PDF in /public and link it here */}
         <Button href="/resume.pdf" variant="primary">
           Download resume (PDF)
         </Button>
