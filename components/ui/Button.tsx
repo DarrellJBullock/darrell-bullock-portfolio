@@ -10,6 +10,7 @@ interface ButtonBaseProps {
   variant?: ButtonVariant;
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
 }
 
 interface ButtonAsLink extends ButtonBaseProps {
@@ -56,6 +57,7 @@ export function Button(props: ButtonProps) {
   const baseClasses = cn(
     "inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold font-display tracking-wide transition-all duration-200 ease-out min-h-[44px] min-w-[44px]",
     VARIANT_STYLES[variant],
+    !props.href && props.disabled && "opacity-50 cursor-not-allowed",
     className
   );
 
@@ -78,6 +80,7 @@ export function Button(props: ButtonProps) {
       type={props.type ?? "button"}
       ref={ref as React.Ref<HTMLButtonElement>}
       onClick={props.onClick}
+      disabled={props.disabled}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={baseClasses}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useTransition, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
+import { sendContactMessage } from "@/app/contact/actions";
 
 interface FormErrors {
   name?: string;
@@ -13,6 +14,8 @@ export function ContactForm() {
   const [values, setValues] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
 
   function validate(): boolean {
     const nextErrors: FormErrors = {};
@@ -29,10 +32,17 @@ export function ContactForm() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setServerError(null);
     if (!validate()) return;
-    // NOTE: no backend is wired up yet — this simulates submission for the MVP.
-    // TODO: connect to an email service (e.g. Resend, Formspree) or an API route.
-    setSubmitted(true);
+
+    startTransition(async () => {
+      const result = await sendContactMessage(values.name, values.email, values.message);
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setServerError(result.error ?? "Something went wrong. Please try again.");
+      }
+    });
   }
 
   if (submitted) {
@@ -45,8 +55,7 @@ export function ContactForm() {
           Thanks, {values.name.split(" ")[0]}.
         </h3>
         <p className="mt-2 text-sm text-fog-dim">
-          This form isn&apos;t wired to a live backend yet, so nothing was actually sent, but the
-          form itself is fully validated and ready to connect to an email service.
+          Your message is on its way. I&apos;ll get back to you at {values.email} soon.
         </p>
       </div>
     );
@@ -120,8 +129,14 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" variant="primary" className="w-full">
-        Send message
+      {serverError && (
+        <p role="alert" className="text-sm text-danger">
+          {serverError}
+        </p>
+      )}
+
+      <Button type="submit" variant="primary" className="w-full" disabled={isPending}>
+        {isPending ? "Sending…" : "Send message"}
       </Button>
     </form>
   );
