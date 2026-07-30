@@ -344,6 +344,58 @@ export const projects: Project[] = [
     resumeBullet:
       "Built a HIPAA-aware healthcare claims analytics warehouse with synthetic data, role-based masking, audit logging, and SQL data quality checks.",
   },
+  {
+    id: "ascendra",
+    slug: "ascendra",
+    title: "Ascendra",
+    category: "AI Game, Startup Simulation, Business Strategy",
+    filters: ["AI", "Games"],
+    tagline:
+      "An AI-powered startup simulation game — build a company week by week toward a $1M valuation before you run out of cash.",
+    description:
+      "Ascendra is a startup simulation game: name a company, pick an industry and founder background, then advance week by week as an AI-driven event engine throws realistic curveballs at your cash, MRR, valuation, and technical debt.",
+    portfolioAngle:
+      "Built an AI-powered startup simulation game with a deterministic turn engine, AI-generated event narratives with a graceful fallback, and a rate-limited proxy that keeps the AI provider key off the client.",
+    status: "Prototype",
+    githubUrl: "https://github.com/DarrellJBullock/ascendra-game",
+    liveUrl: "https://frontend-psi-one-63.vercel.app",
+    caseStudyUrl: undefined,
+    featured: false,
+    stack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Recharts",
+      "FastAPI",
+      "OpenAI (gpt-4o-mini)",
+      "Docker Compose",
+    ],
+    highlights: [
+      "Deterministic client-side turn engine simulating cash, MRR, valuation, and technical debt",
+      "AI-generated event narratives with a templated fallback so the game keeps working if the AI call fails or times out",
+      "Stateless FastAPI proxy keeps the OpenAI key off the client, behind per-IP rate limiting and an abuse-guard middleware",
+      "82 frontend tests and 22 backend tests (OpenAI mocked, no live network calls) covering the simulation engine",
+    ],
+    problem:
+      "Business simulation games are usually either shallow trivia or slow, static branching narratives. Ascendra needed a core loop that felt reactive and replayable without depending on a live AI call for every turn.",
+    solution:
+      "Ascendra separates a deterministic client-side simulation engine (cash, MRR, valuation, technical debt) from an AI narrative layer: the engine always produces a valid game state, and a stateless FastAPI proxy generates AI event narratives with OpenAI when available, falling back to templated narratives if the AI call fails, times out, or the backend is down.",
+    architecture:
+      "A Next.js/Zustand frontend owns all game state and the deterministic turn engine, persisted to localStorage; a stateless FastAPI backend proxies AI event-narrative generation to OpenAI so the API key never reaches the browser, protected by per-IP rate limiting and an abuse-guard middleware.",
+    challenges: [
+      "Designing a deterministic simulation engine that stays fun and balanced across widely different industries and founder backgrounds",
+      "Keeping the game fully playable when the AI narrative call fails, times out, or the backend is unavailable",
+      "Scoping a v1 \"playable slice\" tightly enough to validate the core loop before investing in breadth or polish",
+    ],
+    futureRoadmap: [
+      "Run an internal playtest to validate the core loop holds attention",
+      "Expand team management, more industries, and competitor intelligence per the phased roadmap",
+      "Add a full design-polish pass beyond the v1 slice",
+    ],
+    resumeBullet:
+      "Built Ascendra, an AI-powered startup simulation game with a deterministic turn engine, AI-generated event narratives with graceful fallback, and a rate-limited proxy protecting the AI provider key.",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
