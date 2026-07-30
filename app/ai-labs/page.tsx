@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const aiDetective = getProjectBySlug("ai-detective-console");
 const prReview = getProjectBySlug("pr-review");
 const healthcareWarehouse = getProjectBySlug("healthcare-claims-warehouse");
+const ascendra = getProjectBySlug("ascendra");
 
 const labEntries = [
   {
@@ -27,6 +28,12 @@ const labEntries = [
     description: prReview?.tagline ?? "",
     status: "Shipped Project" as const,
     href: prReview ? `/projects/${prReview.slug}` : undefined,
+  },
+  {
+    title: "Ascendra",
+    description: ascendra?.tagline ?? "",
+    status: "Prototype" as const,
+    href: ascendra ? `/projects/${ascendra.slug}` : undefined,
   },
   {
     title: "AI-Assisted Healthcare Workflows",
