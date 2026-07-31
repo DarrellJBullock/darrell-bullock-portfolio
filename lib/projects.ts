@@ -300,49 +300,51 @@ export const projects: Project[] = [
     tagline:
       "A HIPAA-aware synthetic healthcare claims warehouse with SQL marts, quality checks, masking, and audit logging.",
     description:
-      "A healthcare claims analytics warehouse built entirely on synthetic data, designed to demonstrate compliance-aware data engineering: role-based access, masked identifiers, audit logging, export controls, and data quality checks on top of advanced SQL warehouse marts.",
+      "A production-style healthcare claims analytics warehouse and dashboard, built entirely on synthetic data. Models the full pipeline from raw claims through staging, a dimensional warehouse, and nine SQL-first analytics marts, behind a Django REST API and a React operations dashboard.",
     portfolioAngle:
-      "Built a HIPAA-aware healthcare claims analytics warehouse using synthetic data, advanced SQL, role-based views, masked identifiers, audit logging, export controls, and data quality checks.",
+      "Built a HIPAA-aware healthcare claims analytics warehouse using Python, Django, React, PostgreSQL, advanced SQL, role-based views, masked identifiers, audit logging, export controls, and data quality checks.",
     status: "In Development",
-    githubUrl: "https://github.com/YOUR_USERNAME/healthcare-claims-warehouse", // TODO: update with real GitHub URL
-    liveUrl: "https://healthcare-claims-warehouse.vercel.app", // TODO: update with real live demo URL
+    githubUrl: "https://github.com/DarrellJBullock/healthcare-claims-warehouse",
+    liveUrl: "https://healthcare-claims-warehouse.vercel.app", // TODO: no live demo deployed yet
     caseStudyUrl: "/case-studies#healthcare-claims-warehouse",
     featured: true,
     stack: [
-      "Next.js",
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "PostgreSQL",
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "PostgreSQL",
-      "Prisma or direct SQL",
+      "Vite",
+      "Recharts",
       "Docker Compose",
       "Advanced SQL",
-      "Warehouse marts",
     ],
     highlights: [
-      "Synthetic claims data pipeline with no real PHI, HIPAA-aware by design",
-      "Role-based views that mask identifiers depending on access level",
-      "Audit logging and export controls around sensitive analytics queries",
-      "Warehouse marts and data quality checks built on advanced SQL",
+      "Nine SQL-first analytics marts built on a dimensional warehouse (raw → staging → warehouse → marts)",
+      "Six role-based demo personas (Admin, Data Engineer, Claims Analyst, Manager, Auditor, Read Only) with masking- and role-aware API responses",
+      "Consistent identifier masking (e.g. MBR-10039281 → MBR-••••9281) enforced server-side and mirrored in the frontend",
+      "15 SQL-defined data quality checks and full audit logging of every sensitive action",
     ],
     problem:
-      "Healthcare analytics systems have to prove compliance discipline, masked identifiers, audit trails, access control, without ever touching real PHI in a portfolio setting.",
+      "Healthcare claims data is hard to analyze and govern because claims, service lines, members, providers, payers, denials, adjustments, payments, and eligibility records live in messy source systems, and teams need trusted SQL marts, quality checks, role-based views, masked identifiers, audit history, and export controls before that data can be safely used for analytics.",
     solution:
-      "The warehouse generates realistic synthetic claims data, models it through SQL marts, and wraps every layer with compliance-aware controls: role-based views that mask identifiers, audit logging on sensitive queries, export controls, and automated data quality checks.",
+      "The warehouse models the pipeline end-to-end, from raw synthetic source tables through staging views to a dimensional warehouse and nine SQL-first analytics marts, behind a Django REST API that enforces role checks and identifier masking, and a React operations dashboard that simply reflects whatever the API decides to return, mask, or deny.",
     architecture:
-      "Docker Compose runs a PostgreSQL warehouse seeded with synthetic claims data; SQL marts and views implement role-based masking; a Next.js frontend surfaces warehouse marts and data quality results through Prisma or direct SQL, with audit logging wrapping sensitive query paths.",
+      "PostgreSQL holds six schemas (raw, staging, warehouse, marts, audit, compliance); Django migrations own the raw, audit, and compliance tables, while staging views, warehouse dimensions/facts, and all nine marts are built by executing SQL files through a build_marts management command. A Django REST Framework API reads from the marts/warehouse via raw SQL and applies role checks and masking; a React/TypeScript dashboard consumes it, switching between six demo roles via an X-Demo-Role header.",
     challenges: [
-      "Generating synthetic claims data realistic enough to support meaningful analytics",
-      "Designing role-based views that mask identifiers without breaking downstream marts",
-      "Implementing audit logging and export controls without adding excessive query overhead",
+      "Designing a SQL-first pipeline (raw → staging → warehouse → marts) that stays separate from Django's ORM instead of modeling everything as Django models",
+      "Enforcing masking and role-based access consistently at the API boundary so the frontend never has to be the source of truth for permissions",
+      "Covering the full 6-role × route access-control matrix with real end-to-end API tests, not just unit tests",
     ],
     futureRoadmap: [
-      "Expand warehouse marts to cover additional claims scenarios",
-      "Add a compliance dashboard summarizing audit log activity",
-      "Add automated data quality alerting",
+      "Add real authentication layered on top of the existing role model",
+      "Move from truncate/reload marts to materialized views with scheduled refresh",
+      "Add SCD Type 2 history for providers and payers, not just members",
     ],
     resumeBullet:
-      "Built a HIPAA-aware healthcare claims analytics warehouse with synthetic data, role-based masking, audit logging, and SQL data quality checks.",
+      "Built a HIPAA-aware healthcare claims analytics warehouse using Python, Django, React, PostgreSQL, advanced SQL, synthetic claims data, role-based views, masked identifiers, audit logging, export controls, and data quality checks across claims, payments, denials, providers, payers, and members.",
   },
   {
     id: "ascendra",
