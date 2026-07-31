@@ -7,9 +7,11 @@ export function ProjectLinks({ project }: { project: Project }) {
       <Button href={project.githubUrl} variant="secondary">
         View on GitHub
       </Button>
-      <Button href={project.liveUrl} variant="ghost">
-        Live demo
-      </Button>
+      {project.liveUrl && (
+        <Button href={project.liveUrl} variant="ghost">
+          Live demo
+        </Button>
+      )}
     </div>
   );
 }

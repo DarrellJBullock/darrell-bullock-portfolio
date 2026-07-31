@@ -38,14 +38,16 @@ export function ProjectCard({ project }: { project: Project }) {
         >
           GitHub
         </a>
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="text-fog-dim hover:text-bright"
-        >
-          Live demo
-        </a>
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-fog-dim hover:text-bright"
+          >
+            Live demo
+          </a>
+        )}
       </div>
     </Card>
   );

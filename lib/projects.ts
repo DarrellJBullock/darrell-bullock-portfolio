@@ -398,6 +398,59 @@ export const projects: Project[] = [
     resumeBullet:
       "Built Ascendra, an AI-powered startup simulation game with a deterministic turn engine, AI-generated event narratives with graceful fallback, and a rate-limited proxy protecting the AI provider key.",
   },
+  {
+    id: "legacy-modernization-dashboard",
+    slug: "legacy-modernization-dashboard",
+    title: "Legacy Modernization Dashboard",
+    category: "Legacy Modernization, ColdFusion, Enterprise, Full-Stack",
+    filters: ["Data", "Developer Tools"],
+    tagline:
+      "A ColdFusion-to-React modernization case study for AcmeOps, a synthetic internal operations platform.",
+    description:
+      "A working legacy-to-modern migration showcase built on a real Dockerized CFML backend, not a mockup. Legacy CFML screens and a modern React dashboard both run against the same PostgreSQL-backed service layer, with a migration tracker, feature parity matrix, technical debt scorecard, audit logging, and role-based access demonstrating how an organization could modernize a CFML system incrementally instead of rewriting it.",
+    portfolioAngle:
+      "Built a ColdFusion-to-React modernization dashboard that refactors legacy CFML workflows into API-driven React experiences while preserving business logic, adding REST endpoints, role-based access, audit logging, migration tracking, and modern dashboard reporting.",
+    status: "In Development",
+    githubUrl: "https://github.com/DarrellJBullock/legacy-modernization-dashboard",
+    liveUrl: "",
+    caseStudyUrl: undefined,
+    featured: true,
+    stack: [
+      "ColdFusion / CFML (Lucee)",
+      "CommandBox",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "Docker Compose",
+      "Recharts",
+    ],
+    highlights: [
+      "Legacy server-rendered CFML screens and the modern React dashboard both call the exact same services/*.cfc business logic, no duplicated logic between old and new",
+      "Hand-rolled REST-style API dispatcher (api/router.cfm) extracted from legacy CFML without a heavyweight framework, keeping the extraction pattern visible",
+      "Migration tracker, feature parity matrix, and technical debt scorecard turn 'we should modernize this' into tracked, prioritized, SQL-backed data",
+      "Structured audit logging (10 event types) and a 7-role access model enforced server-side in RoleService.cfc, not just hidden nav links",
+    ],
+    problem:
+      "Many organizations run ColdFusion/CFML applications that hold years of working business logic behind an outdated, hard-to-maintain UI with no real API boundary, coarse or nonexistent access control, and little to no audit trail. A full rewrite is expensive and risky, but the alternative, doing nothing, lets the maintenance and security debt keep compounding.",
+    solution:
+      "The project applies a strangler-fig approach: business logic lives in a CFML service layer shared by both the legacy .cfm templates and a new REST-style API layer, so the legacy screens keep working unmodified while a React dashboard is built incrementally against the same source of truth. A migration tracker, feature parity matrix, and technical debt scorecard make the modernization progress itself visible and measurable rather than tribal knowledge.",
+    architecture:
+      "A Dockerized CommandBox/Lucee CFML backend serves both legacy/*.cfm screens and api/*.cfc REST endpoints through a hand-rolled router, both calling into a shared services/*.cfc layer backed by PostgreSQL (schema, seed data, dashboard-summary views, and indexes via SQL migrations). A React/TypeScript/Vite frontend consumes the API with a typed client that falls back to clearly-labeled mock data if the backend is unreachable, and role-based access is enforced independently on both the API and the UI.",
+    challenges: [
+      "Getting a hand-rolled REST dispatcher working over CommandBox/Lucee's default routing, which only handles real .cfm/.cfc files by default and needed a Tuckey URL-rewrite front controller for extension-less /api/* routes",
+      "Registering a PostgreSQL datasource reliably in a Dockerized Lucee container, CommandBox's server.json CFConfig sync silently failed to register the JDBC driver, fixed by defining the datasource natively via Lucee's this.datasources in Application.cfc instead",
+      "Keeping business logic entirely out of both the legacy .cfm templates and the new API controllers so old and new UIs stay behaviorally identical by construction",
+    ],
+    futureRoadmap: [
+      "Replace session-only demo auth with a token-based (JWT/OAuth) auth layer, already tracked as a Critical-risk item on the project's own migration tracker",
+      "Add TestBox coverage for the CFML service layer",
+      "Deploy the CFML API to a container host and the React frontend to Vercel for a live public demo",
+    ],
+    resumeBullet:
+      "Built a ColdFusion-to-React modernization dashboard using a Dockerized CFML backend, React, TypeScript, PostgreSQL, REST-style APIs, migration tracking, role-based access, audit logging, and side-by-side legacy vs modern workflow comparison.",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
