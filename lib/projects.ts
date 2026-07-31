@@ -305,7 +305,7 @@ export const projects: Project[] = [
       "Built a HIPAA-aware healthcare claims analytics warehouse using Python, Django, React, PostgreSQL, advanced SQL, role-based views, masked identifiers, audit logging, export controls, and data quality checks.",
     status: "In Development",
     githubUrl: "https://github.com/DarrellJBullock/healthcare-claims-warehouse",
-    liveUrl: "https://healthcare-claims-warehouse.vercel.app", // TODO: no live demo deployed yet
+    liveUrl: "https://healthcare-claims-warehouse-fronten.vercel.app",
     caseStudyUrl: "/case-studies#healthcare-claims-warehouse",
     featured: true,
     stack: [
