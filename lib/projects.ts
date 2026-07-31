@@ -412,7 +412,7 @@ export const projects: Project[] = [
       "Built a ColdFusion-to-React modernization dashboard that refactors legacy CFML workflows into API-driven React experiences while preserving business logic, adding REST endpoints, role-based access, audit logging, migration tracking, and modern dashboard reporting.",
     status: "In Development",
     githubUrl: "https://github.com/DarrellJBullock/legacy-modernization-dashboard",
-    liveUrl: "",
+    liveUrl: "https://legacy-modernization-dashboard.vercel.app",
     caseStudyUrl: undefined,
     featured: true,
     stack: [
@@ -446,7 +446,7 @@ export const projects: Project[] = [
     futureRoadmap: [
       "Replace session-only demo auth with a token-based (JWT/OAuth) auth layer, already tracked as a Critical-risk item on the project's own migration tracker",
       "Add TestBox coverage for the CFML service layer",
-      "Deploy the CFML API to a container host and the React frontend to Vercel for a live public demo",
+      "Deploy the CFML API to a container host so the live demo runs against the real backend instead of fallback mock data",
     ],
     resumeBullet:
       "Built a ColdFusion-to-React modernization dashboard using a Dockerized CFML backend, React, TypeScript, PostgreSQL, REST-style APIs, migration tracking, role-based access, audit logging, and side-by-side legacy vs modern workflow comparison.",
